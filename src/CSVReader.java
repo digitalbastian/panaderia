@@ -43,4 +43,43 @@ public class CSVReader {
 
         return usuarios;
     }
+
+    public static List<Producto> readCSVProductos(String path) {
+        List<Producto> productos = new ArrayList<>();
+        File file = new File(path);
+    
+        if (file.exists()) {
+            // Leer el archivo
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                // Omitir la línea de encabezado
+                if (br.readLine() != null) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        String[] values = line.split(",");
+                        Producto producto = new Producto(
+                            Integer.parseInt(values[0].trim()),
+                            values[1],
+                            Double.parseDouble(values[2].trim()),
+                            Integer.parseInt(values[3].trim())
+                        );
+                        productos.add(producto);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // Crea el archivo con un producto por defecto
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+                bw.write("ID de producto,Nombre del producto,Precio,Inventario\n");
+                bw.write("1,Producto Ejemplo,10.99,50\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // Añadir el producto por defecto a la lista
+            productos.add(new Producto(1, "Producto Ejemplo", 10.99, 50));
+        }
+    
+        return productos;
+    }
 }

@@ -7,5 +7,11 @@ public class App {
             System.out.println("Nombre: " + usuario.getNombre() + ", Correo: " + usuario.getCorreo() +
                                ", Contraseña: " + usuario.getContraseña() + ", Tipo de Usuario: " + usuario.getTipoUsuario());
         }
+
+        List<Producto> productos = CSVReader.readCSVProductos("./data/productos.csv");
+        for (Producto producto : productos) {
+            System.out.println("ID: " + producto.getIdProducto() + ", Nombre: " + producto.getNombreProducto() +
+                                ", Precio: " + producto.getPrecio() + ", Inventario: " + producto.getInventario());
+        }
     }
 }
