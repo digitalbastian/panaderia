@@ -18,11 +18,12 @@ public class CSVReader {
             // Leer el archivo
             try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                 // Omitir la línea de encabezado
-                if (br.readLine() != null) {
+                String headerLine = br.readLine();
+                if (headerLine != null) {
                     String line;
                     while ((line = br.readLine()) != null) {
                         String[] values = line.split(",");
-                        Usuario usuario = new Usuario(values[0], values[1], values[2], Integer.parseInt(values[3].trim()));
+                        Usuario usuario = new Usuario(values[0], values[1], values[2], values[3]);
                         usuarios.add(usuario);
                     }
                 }
@@ -38,7 +39,7 @@ public class CSVReader {
                 e.printStackTrace();
             }
             // Añadir el usuario por defecto a la lista
-            usuarios.add(new Usuario("admin", "admin@example.com", "admin", 1));
+            usuarios.add(new Usuario("admin", "admin@example.com", "panes", "admin" ));
         }
 
         return usuarios;
@@ -52,7 +53,8 @@ public class CSVReader {
             // Leer el archivo
             try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                 // Omitir la línea de encabezado
-                if (br.readLine() != null) {
+                String headerLine = br.readLine();
+                if (headerLine != null) {
                     String line;
                     while ((line = br.readLine()) != null) {
                         String[] values = line.split(",");

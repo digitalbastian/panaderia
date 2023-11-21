@@ -4,11 +4,11 @@ public class Producto {
     private double precio;
     private int inventario;
 
-    public Producto(int idProducto, String nombreProducto, double precio, int inventario) {
+    public Producto(int idProducto, String nombreProducto, double precio, int Inventario) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.precio = precio;
-        this.inventario = inventario;
+        this.inventario = Inventario;
     }
 
     // Getters
