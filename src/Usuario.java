@@ -2,9 +2,9 @@ public class Usuario {
     private String nombre;
     private String correo;
     private String contraseña;
-    private int tipoUsuario;
+    private String tipoUsuario;
 
-    public Usuario(String nombre, String correo, String contraseña, int tipoUsuario) {
+    public Usuario(String nombre, String correo, String contraseña, String tipoUsuario) {
         this.nombre = nombre;
         this.correo = correo;
         this.contraseña = contraseña;
@@ -24,7 +24,7 @@ public class Usuario {
         return contraseña;
     }
 
-    public int getTipoUsuario() {
+    public String getTipoUsuario() {
         return tipoUsuario;
     }
 }
